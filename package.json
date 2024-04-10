@@ -15,6 +15,7 @@
     "format": "prettier --write ./src/**/*.{ts,tsx,js,jsx,json,css,scss,md}"
   },
   "dependencies": {
+    "firebase": "10.10.0",
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18"
