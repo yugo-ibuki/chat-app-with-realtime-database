@@ -19,11 +19,13 @@ export interface LoginUser {
 interface UserContextType {
   user: LoginUser | null
   loading: boolean
+  resetUser: () => void
 }
 
 const UserContext = createContext<UserContextType>({
   user: null,
   loading: true,
+  resetUser: () => {},
 })
 
 export const useUserContext = () => useContext(UserContext)
@@ -35,9 +37,9 @@ interface UserProviderProps {
 export const UserProvider: FC<UserProviderProps> = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const auth = getAuth()
 
   useEffect(() => {
-    const auth = getAuth()
     const unsubscribe = onAuthStateChanged(
       auth,
       (firebaseUser: User | null) => {
@@ -57,10 +59,14 @@ export const UserProvider: FC<UserProviderProps> = ({ children }) => {
     )
 
     return () => unsubscribe()
-  }, [])
+  }, [auth])
+
+  const resetUser = () => {
+    setUser(null)
+  }
 
   return (
-    <UserContext.Provider value={{ user, loading }}>
+    <UserContext.Provider value={{ user, loading, resetUser }}>
       {children}
     </UserContext.Provider>
   )

@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Center, Stack } from '@chakra-ui/react'
+import { Box, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/navigation'
 import { useUserContext } from '../../contexts/LoginUserContext'
 import { ReactNode, useEffect } from 'react'
@@ -23,17 +23,15 @@ export default function Layout({
     return <div>Loading...</div>
   }
 
-  if (!loading && !user) {
-    router.push('/login')
+  if (!user) {
+    return null
   }
 
   return (
-    <Center h="100vh">
-      <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
-        <Box rounded="lg" boxShadow="lg" p={8}>
-          <Stack spacing={4}>{children}</Stack>
-        </Box>
-      </Stack>
-    </Center>
+    <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
+      <Box rounded="lg" boxShadow="lg" p={8}>
+        <Stack spacing={4}>{children}</Stack>
+      </Box>
+    </Stack>
   )
 }
