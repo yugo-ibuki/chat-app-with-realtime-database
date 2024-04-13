@@ -42,7 +42,7 @@ const Page = () => {
                 <strong>{message.senderEmail}</strong>
                 <span>{new Date(message.timestamp).toLocaleTimeString()}</span>
               </div>
-              <p className="message-content">内容</p>
+              <p className="message-content">{message.text}</p>
             </li>
           ))}
         </ul>
