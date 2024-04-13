@@ -8,7 +8,8 @@ import {
   ReactNode,
   FC,
 } from 'react'
-import { getAuth, onAuthStateChanged, User } from 'firebase/auth'
+import { onAuthStateChanged, User } from 'firebase/auth'
+import { auth } from '../configs/firebase'
 
 export interface LoginUser {
   id: string
@@ -37,7 +38,6 @@ interface UserProviderProps {
 export const UserProvider: FC<UserProviderProps> = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
-  const auth = getAuth()
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(
