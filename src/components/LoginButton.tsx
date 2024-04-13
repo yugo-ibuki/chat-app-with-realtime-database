@@ -27,8 +27,9 @@ export const LoginButton = () => {
       }
       await saveUserToDatabase(userData)
       router.push('/rooms')
-    } catch (error) {
-      console.error('ログインエラー:', error)
+    } catch (err) {
+      console.error('ログインエラー:', err)
+      throw err
     }
   }
 
@@ -42,11 +43,5 @@ export const LoginButton = () => {
 const saveUserToDatabase = async (userData: UserData) => {
   const db = getDatabase()
   const userRef = ref(db, `users/${userData.uid}`)
-  try {
-    const registeredUser = await set(userRef, userData)
-    console.log(registeredUser)
-    console.log('ユーザーデータが保存されました')
-  } catch (err) {
-    console.error('ユーザーデータの保存エラー:', err)
-  }
+  await set(userRef, userData)
 }
