@@ -1,9 +1,9 @@
 'use client'
 
-import { useMessage } from '../../../libs/useMessage'
+import { useMessage } from '../../../hooks/useMessage'
 import { useParams } from 'next/navigation'
 import { Box, Button, FormControl, Heading, Input } from '@chakra-ui/react'
-import { useFetchRoomNameFromRoomId } from '../../../libs/useFetchRoomNameFromRoomId'
+import { useFetchRoomNameFromRoomId } from '../../../hooks/useFetchRoomNameFromRoomId'
 
 const Page = () => {
   const roomId = useParams<{ roomId: string }>().roomId

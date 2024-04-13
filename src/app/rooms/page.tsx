@@ -1,6 +1,6 @@
 'use client'
 
-import { useRooms } from '../../libs/useRooms'
+import { useRooms } from '../../hooks/useRooms'
 import Link from 'next/link'
 import { Box, Button, Heading, Input, VStack } from '@chakra-ui/react'
 
