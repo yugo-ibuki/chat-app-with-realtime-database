@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useState } from 'react'
-import { getDatabase, onValue, push, ref, set } from 'firebase/database'
+import { onValue, push, ref, set } from 'firebase/database'
 import { useUserContext } from '../contexts/LoginUserContext'
+import { db } from '../configs/firebase'
 
 interface Message {
   text: string
@@ -16,7 +17,6 @@ export const useMessage = (roomId: string) => {
   useEffect(() => {
     if (!roomId) return
 
-    const db = getDatabase()
     const messagesRef = ref(db, `chatRooms/${roomId}/messages`)
 
     const unsubscribe = onValue(messagesRef, (snapshot) => {
@@ -40,7 +40,6 @@ export const useMessage = (roomId: string) => {
       return
     }
 
-    const db = getDatabase()
     const messagesRef = ref(db, `chatRooms/${roomId}/messages`)
     const newMessageRef = push(messagesRef)
 

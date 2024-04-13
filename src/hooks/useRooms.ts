@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { getDatabase, ref, onValue, push, update } from 'firebase/database'
+import { db } from '../configs/firebase'
 
 interface ChatRoomData {
   name: string
@@ -14,7 +15,6 @@ export const useRooms = () => {
   const [roomName, setRoomName] = useState('')
 
   useEffect(() => {
-    const db = getDatabase()
     const chatRoomsRef = ref(db, 'chatRooms')
 
     const unsubscribe = onValue(chatRoomsRef, (snapshot) => {

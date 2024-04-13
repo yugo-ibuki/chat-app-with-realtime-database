@@ -11,7 +11,6 @@ export const useCheckLoginStatus = () => {
   useEffect(() => {
     setLoading(true)
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log(user)
       if (user) {
         setLoggedIn(true)
       } else {
