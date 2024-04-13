@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import ChakraUIRenderer from '../chakra-ui-renderer'
+import ChakraProvider from '../ChakraProvider'
 import { UserProvider } from '../contexts/LoginUserContext'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -19,9 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ChakraUIRenderer>
+        <ChakraProvider>
           <UserProvider>{children}</UserProvider>
-        </ChakraUIRenderer>
+        </ChakraProvider>
       </body>
     </html>
   )
