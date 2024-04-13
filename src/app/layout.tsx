@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import ChakraProvider from '../ChakraProvider'
+import ChakraProvider from '../providers/ChakraProvider'
 import { UserProvider } from '../contexts/LoginUserContext'
 
 const inter = Inter({ subsets: ['latin'] })
