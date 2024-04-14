@@ -4,18 +4,25 @@ import { useMessage } from '../../../hooks/useMessage'
 import { useParams } from 'next/navigation'
 import { Box, Button, FormControl, Heading, Input } from '@chakra-ui/react'
 import { useFetchRoomNameFromRoomId } from '../../../hooks/useFetchRoomNameFromRoomId'
+import { usePresences } from '../../../hooks/usePresences'
+import { useUserContext } from '../../../contexts/LoginUserContext'
 
 const Page = () => {
+  const { user } = useUserContext()
   const roomId = useParams<{ roomId: string }>().roomId
   const { messages, message, setMessage, createMessage } = useMessage(roomId)
   const { roomName } = useFetchRoomNameFromRoomId(roomId)
+  const { presence } = usePresences({ roomId, userId: user.id })
+  console.log('presence の数は: ', presence)
 
   return (
     <main>
       <Heading as="h2" size="lg" mb={4} textAlign="center">
         チャットルーム
         <br />
-        NAME: {roomName}
+        ルーム名: {roomName}
+        <br />
+        参加人数: {presence.length}
       </Heading>
       <div className="chat-container">
         <Box my="4" mx="4">
