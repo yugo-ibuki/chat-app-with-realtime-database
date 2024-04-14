@@ -13,7 +13,6 @@ const Page = () => {
   const { messages, message, setMessage, createMessage } = useMessage(roomId)
   const { roomName } = useFetchRoomNameFromRoomId(roomId)
   const { presence } = usePresences({ roomId, userId: user.id })
-  console.log('presence の数は: ', presence)
 
   return (
     <main>
