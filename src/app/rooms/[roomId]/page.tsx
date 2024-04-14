@@ -5,14 +5,12 @@ import { useParams } from 'next/navigation'
 import { Box, Button, FormControl, Heading, Input } from '@chakra-ui/react'
 import { useFetchRoomNameFromRoomId } from '../../../hooks/useFetchRoomNameFromRoomId'
 import { usePresences } from '../../../hooks/usePresences'
-import { useUserContext } from '../../../contexts/LoginUserContext'
 
 const Page = () => {
-  const { user } = useUserContext()
   const roomId = useParams<{ roomId: string }>().roomId
   const { messages, message, setMessage, createMessage } = useMessage(roomId)
   const { roomName } = useFetchRoomNameFromRoomId(roomId)
-  const { presence } = usePresences({ roomId, userId: user.id })
+  const { presence } = usePresences(roomId)
 
   return (
     <main>
