@@ -11,13 +11,13 @@ import {
 import { onAuthStateChanged, User } from 'firebase/auth'
 import { auth } from '../configs/firebase'
 
-export interface LoginUser {
+export type LoginUser = {
   id: string
   name: string | null
   email: string | null
 }
 
-interface UserContextType {
+type UserContextType = {
   user: LoginUser | null
   loading: boolean
   resetUser: () => void
@@ -31,7 +31,7 @@ const UserContext = createContext<UserContextType>({
 
 export const useUserContext = () => useContext(UserContext)
 
-interface UserProviderProps {
+type UserProviderProps = {
   children: ReactNode
 }
 

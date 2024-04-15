@@ -2,11 +2,11 @@ import { FormEvent, useEffect, useState } from 'react'
 import { getDatabase, ref, onValue, push, update } from 'firebase/database'
 import { db } from '../configs/firebase'
 
-interface ChatRoomData {
+type ChatRoomData = {
   name: string
 }
 
-interface ChatRoom extends ChatRoomData {
+type ChatRoom = ChatRoomData & {
   id: string
 }
 

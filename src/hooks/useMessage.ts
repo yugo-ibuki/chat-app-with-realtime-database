@@ -3,7 +3,7 @@ import { onValue, push, ref, set } from 'firebase/database'
 import { useUserContext } from '../contexts/LoginUserContext'
 import { db } from '../configs/firebase'
 
-interface Message {
+type Message = {
   text: string
   senderEmail: string
   timestamp?: number
