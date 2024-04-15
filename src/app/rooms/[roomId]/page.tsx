@@ -21,7 +21,7 @@ const Page = () => {
         <br />
         参加人数: {presence.length}
       </Heading>
-      <div className="chat-container">
+      <div>
         <Box my="4" mx="4">
           <form onSubmit={createMessage}>
             <FormControl display="flex" alignItems="center">
@@ -39,14 +39,14 @@ const Page = () => {
             </FormControl>
           </form>
         </Box>
-        <ul className="chat-messages">
+        <ul>
           {messages.map((message) => (
-            <li key={message.timestamp} className="message">
-              <div className="message-header">
+            <li key={message.timestamp}>
+              <div>
                 <strong>{message.senderEmail}</strong>
                 <span>{new Date(message.timestamp).toLocaleTimeString()}</span>
               </div>
-              <p className="message-content">{message.text}</p>
+              <p>{message.text}</p>
             </li>
           ))}
         </ul>

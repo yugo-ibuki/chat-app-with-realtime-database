@@ -31,7 +31,6 @@ export const useRooms = () => {
     })
 
     return () => {
-      console.log('Chat rooms listener detached')
       unsubscribe()
     }
   }, [])
@@ -45,13 +44,8 @@ export const useRooms = () => {
       const newChatRoom: ChatRoomData = {
         name: roomName.trim(),
       }
-      try {
-        await update(newChatRoomRef, newChatRoom)
-        console.log('チャットルームが作成されました')
-        setRoomName('')
-      } catch (err) {
-        console.error('チャットルームの作成に失敗しました:', err)
-      }
+      await update(newChatRoomRef, newChatRoom)
+      setRoomName('')
     }
   }
 
