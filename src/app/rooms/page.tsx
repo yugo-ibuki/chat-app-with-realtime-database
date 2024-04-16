@@ -2,10 +2,11 @@
 
 import { useRooms } from '../../hooks/useRooms'
 import Link from 'next/link'
-import { Box, Button, Heading, Input, VStack } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Input, VStack } from '@chakra-ui/react'
 
 const Page = () => {
-  const { chatRooms, createRoom, roomName, setRoomName } = useRooms()
+  const { chatRooms, createRoom, deleteRoom, roomName, setRoomName } =
+    useRooms()
   return (
     <main>
       <Heading as="h2" size="lg" mb={4} textAlign="center">
@@ -31,20 +32,36 @@ const Page = () => {
         <Box mt={10}>
           <VStack spacing={4} align="stretch">
             {chatRooms.map((room) => (
-              <Box
+              <Flex
                 key={room.id}
                 borderWidth={1}
                 borderRadius="md"
                 boxShadow="md"
                 _hover={{ boxShadow: 'lg', transform: 'translateY(-2px)' }}
                 transition="all 0.2s"
+                w="full"
+                align="center"
+                justify="space-between"
+                px={2}
               >
-                <Link href={`/rooms/${room.id}`}>
+                <Link
+                  href={`/rooms/${room.id}`}
+                  style={{
+                    width: '100%',
+                  }}
+                >
                   <Heading as="h3" size="md" p={4}>
                     {room.name}
                   </Heading>
                 </Link>
-              </Box>
+                <Button
+                  colorScheme="red"
+                  size="sm"
+                  onClick={() => deleteRoom(room.id)}
+                >
+                  削除
+                </Button>
+              </Flex>
             ))}
           </VStack>
         </Box>
