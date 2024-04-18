@@ -5,7 +5,8 @@ import { auth } from '../configs/firebase'
 import { GoogleAuthProvider } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 import { Button } from '@chakra-ui/react'
-import { getDatabase, ref, set } from 'firebase/database'
+import { ref, set } from 'firebase/database'
+import { db } from '../configs/firebase'
 
 type UserData = {
   uid: string
@@ -41,7 +42,6 @@ export const LoginButton = () => {
 }
 
 const saveUserToDatabase = async (userData: UserData) => {
-  const db = getDatabase()
   const userRef = ref(db, `users/${userData.uid}`)
   await set(userRef, userData)
 }

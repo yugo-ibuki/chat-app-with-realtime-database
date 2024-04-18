@@ -61,7 +61,6 @@ export const useRooms = () => {
       // ルームの作成者を確認
       const snapshot = await get(roomRef)
       const roomData = snapshot.val()
-      console.log(user.id !== roomData.createdBy)
       if (roomData.createdBy !== user.id) {
         throw new Error('Only the room creator can delete the room.')
       }
@@ -76,7 +75,6 @@ export const useRooms = () => {
         duration: 5000,
         isClosable: true,
       })
-      throw err
     }
   }
 
