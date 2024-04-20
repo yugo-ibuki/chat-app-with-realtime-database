@@ -2,7 +2,7 @@ import { child, get, ref } from 'firebase/database'
 import { useEffect, useState } from 'react'
 import { db } from '../configs/firebase'
 
-export const useFetchRoomNameFromRoomId = (roomId: string) => {
+export const useRoom = (roomId: string) => {
   const [roomName, setRoomName] = useState<string | null>('')
 
   useEffect(() => {
