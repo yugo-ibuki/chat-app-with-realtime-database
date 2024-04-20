@@ -59,7 +59,7 @@ export const UserProvider: FC<UserProviderProps> = ({ children }) => {
     )
 
     return () => unsubscribe()
-  }, [auth])
+  }, [])
 
   const resetUser = () => {
     setUser(null)
