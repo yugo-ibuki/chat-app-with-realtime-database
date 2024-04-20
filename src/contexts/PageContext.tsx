@@ -17,25 +17,27 @@ export type LoginUser = {
   email: string | null
 }
 
-type UserContextType = {
+type PageContextType = {
   user: LoginUser | null
   loading: boolean
+  setLoading: (loading: boolean) => void
   resetUser: () => void
 }
 
-const UserContext = createContext<UserContextType>({
+const PageContext = createContext<PageContextType>({
   user: null,
   loading: true,
+  setLoading: () => {},
   resetUser: () => {},
 })
 
-export const useUserContext = () => useContext(UserContext)
+export const usePageContext = () => useContext(PageContext)
 
 type UserProviderProps = {
   children: ReactNode
 }
 
-export const UserProvider: FC<UserProviderProps> = ({ children }) => {
+export const PageProvider: FC<UserProviderProps> = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
 
@@ -66,8 +68,8 @@ export const UserProvider: FC<UserProviderProps> = ({ children }) => {
   }
 
   return (
-    <UserContext.Provider value={{ user, loading, resetUser }}>
+    <PageContext.Provider value={{ user, loading, setLoading, resetUser }}>
       {children}
-    </UserContext.Provider>
+    </PageContext.Provider>
   )
 }

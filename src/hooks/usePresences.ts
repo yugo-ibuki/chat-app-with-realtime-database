@@ -7,10 +7,10 @@ import {
 } from 'firebase/database'
 import { db } from '../configs/firebase'
 import { useEffect, useState } from 'react'
-import { useUserContext } from '../contexts/LoginUserContext'
+import { usePageContext } from '../contexts/PageContext'
 
 export const usePresences = (roomId: string) => {
-  const { user } = useUserContext()
+  const { user } = usePageContext()
   const userId = user.id
   const [presence, setPresence] = useState<{ id: string }[]>([])
 

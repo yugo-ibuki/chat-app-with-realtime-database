@@ -2,15 +2,15 @@
 
 import { Box, Center, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/navigation'
-import { useUserContext } from '../../contexts/LoginUserContext'
 import { ReactNode, useEffect } from 'react'
+import { usePageContext } from '../../contexts/PageContext'
 
 export default function Layout({
   children,
 }: Readonly<{
   children: ReactNode
 }>) {
-  const { user, loading } = useUserContext()
+  const { user, loading } = usePageContext()
   const router = useRouter()
 
   useEffect(() => {

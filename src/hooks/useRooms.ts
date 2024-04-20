@@ -1,8 +1,8 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { ref, onValue, push, update, get, remove } from 'firebase/database'
 import { db } from '../configs/firebase'
-import { useUserContext } from '../contexts/LoginUserContext'
 import { useToast } from '@chakra-ui/react'
+import { usePageContext } from '../contexts/PageContext'
 
 type ChatRoomData = {
   name: string
@@ -15,7 +15,7 @@ type ChatRoom = ChatRoomData & {
 
 export const useRooms = () => {
   const toast = useToast()
-  const { user } = useUserContext()
+  const { user } = usePageContext()
   const [chatRooms, setChatRooms] = useState<ChatRoom[]>([])
   const [roomName, setRoomName] = useState('')
 

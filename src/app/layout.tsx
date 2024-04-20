@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import ChakraProvider from '../providers/ChakraProvider'
-import { UserProvider } from '../contexts/LoginUserContext'
+import { PageProvider } from '../contexts/PageContext'
 import { ReactNode } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ChakraProvider>
-          <UserProvider>{children}</UserProvider>
+          <PageProvider>{children}</PageProvider>
         </ChakraProvider>
       </body>
     </html>

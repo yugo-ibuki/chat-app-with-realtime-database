@@ -2,17 +2,17 @@
 
 import { Box, Button, Flex, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/navigation'
-import { useUserContext } from '../../contexts/LoginUserContext'
 import { ReactNode, useEffect } from 'react'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../configs/firebase'
+import { usePageContext } from '../../contexts/PageContext'
 
 export default function Layout({
   children,
 }: Readonly<{
   children: ReactNode
 }>) {
-  const { user, loading, resetUser } = useUserContext()
+  const { user, loading, resetUser } = usePageContext()
   const router = useRouter()
 
   useEffect(() => {

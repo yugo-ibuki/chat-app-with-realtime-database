@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { onValue, push, ref, set } from 'firebase/database'
-import { useUserContext } from '../contexts/LoginUserContext'
 import { db } from '../configs/firebase'
+import { usePageContext } from '../contexts/PageContext'
 
 type Message = {
   text: string
@@ -10,7 +10,7 @@ type Message = {
 }
 
 export const useMessage = (roomId: string) => {
-  const { user } = useUserContext()
+  const { user } = usePageContext()
   const [messages, setMessages] = useState<Message[]>([])
   const [message, setMessage] = useState('')
 
