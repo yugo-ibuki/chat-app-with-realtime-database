@@ -26,7 +26,8 @@ export const LoginButton = () => {
         displayName: user.displayName,
         email: user.email,
       }
-      await saveUserToDatabase(userData)
+      const userRef = ref(db, `users/${userData.uid}`)
+      await set(userRef, userData)
       router.push('/rooms')
     } catch (err) {
       console.error('ログインエラー:', err)
@@ -39,9 +40,4 @@ export const LoginButton = () => {
       <Button onClick={handleGoogleLogin}>Google でログイン</Button>
     </div>
   )
-}
-
-const saveUserToDatabase = async (userData: UserData) => {
-  const userRef = ref(db, `users/${userData.uid}`)
-  await set(userRef, userData)
 }
