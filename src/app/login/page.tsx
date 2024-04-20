@@ -2,10 +2,10 @@
 
 import { LoginButton } from '../../components/LoginButton'
 import { useRouter } from 'next/navigation'
-import { useUserContext } from '../../contexts/LoginUserContext'
+import { usePageContext } from '../../contexts/PageContext'
 
 const Page = () => {
-  const { user, loading } = useUserContext()
+  const { user, loading } = usePageContext()
   const router = useRouter()
 
   if (loading) {
