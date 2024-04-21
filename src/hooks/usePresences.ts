@@ -47,6 +47,9 @@ export const usePresences = (roomId: string) => {
     return () => {
       onJoin()
       onLeave()
+
+      // ユーザーのプレゼンス情報を削除
+      set(userPresenceRef, null)
     }
   }, [roomId, userId])
 
