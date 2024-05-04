@@ -10,6 +10,9 @@
         },
         "email": {
           ".validate": "newData.isString()"
+        },
+        "$other": {
+          ".validate": false
         }
       }
     },
@@ -44,6 +47,9 @@
               ".validate": false
             }
           }
+        },
+        "$other": {
+          ".validate": false
         }
       }
     }
