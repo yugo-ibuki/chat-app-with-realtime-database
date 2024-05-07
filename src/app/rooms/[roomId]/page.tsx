@@ -41,7 +41,7 @@ const Page = () => {
         </Box>
         <ul>
           {messages.map((message) => (
-            <li key={message.timestamp}>
+            <li key={message.timestamp.toString()}>
               <div>
                 <strong>{message.senderEmail}</strong>
                 <span>{new Date(message.timestamp).toLocaleTimeString()}</span>

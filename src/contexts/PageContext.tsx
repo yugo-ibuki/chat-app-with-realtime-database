@@ -38,7 +38,7 @@ type UserProviderProps = {
 }
 
 export const PageProvider: FC<UserProviderProps> = ({ children }) => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState<LoginUser | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

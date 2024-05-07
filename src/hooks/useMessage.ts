@@ -6,7 +6,7 @@ import { usePageContext } from '../contexts/PageContext'
 type Message = {
   text: string
   senderEmail: string
-  timestamp?: number
+  timestamp: number
 }
 
 export const useMessage = (roomId: string) => {
@@ -20,7 +20,7 @@ export const useMessage = (roomId: string) => {
     const messagesRef = ref(db, `chatRooms/${roomId}/messages`)
 
     const unsubscribe = onValue(messagesRef, (snapshot) => {
-      const loadedMessages = []
+      const loadedMessages: Message[] = []
       snapshot.forEach((childSnapshot) => {
         const messageData = childSnapshot.val()
         messageData.id = childSnapshot.key // データと共にキー（ID）も保存
@@ -44,7 +44,7 @@ export const useMessage = (roomId: string) => {
     const newMessageRef = push(messagesRef)
 
     const newMessage: Message = {
-      senderEmail: user.email,
+      senderEmail: user?.email ?? '',
       text: message,
       timestamp: Date.now(),
     }

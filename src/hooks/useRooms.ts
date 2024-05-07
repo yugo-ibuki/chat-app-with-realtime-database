@@ -47,7 +47,7 @@ export const useRooms = () => {
       const newChatRoomRef = push(chatRoomsRef)
       const newChatRoom: ChatRoomData = {
         name: roomName.trim(),
-        createdBy: user.id,
+        createdBy: user?.id ?? '',
       }
       await update(newChatRoomRef, newChatRoom)
       setRoomName('')
@@ -61,7 +61,7 @@ export const useRooms = () => {
       // ルームの作成者を確認
       const snapshot = await get(roomRef)
       const roomData = snapshot.val()
-      if (roomData.createdBy !== user.id) {
+      if (roomData.createdBy !== user?.id) {
         throw new Error('Only the room creator can delete the room.')
       }
 

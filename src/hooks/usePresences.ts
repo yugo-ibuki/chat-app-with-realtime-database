@@ -11,7 +11,7 @@ import { usePageContext } from '../contexts/PageContext'
 
 export const usePresences = (roomId: string) => {
   const { user } = usePageContext()
-  const userId = user.id
+  const userId = user?.id ?? ''
   const [presence, setPresence] = useState<{ id: string }[]>([])
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export const usePresences = (roomId: string) => {
       setPresence((prevPresence) => {
         // 重複排除
         const userSet = new Set(prevPresence.map((user) => user.id))
-        if (!userSet.has(newUserId)) {
+        if (newUserId && !userSet.has(newUserId)) {
           return [...prevPresence, { id: newUserId }]
         }
         return prevPresence
