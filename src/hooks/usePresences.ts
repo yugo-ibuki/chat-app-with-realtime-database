@@ -11,7 +11,7 @@ import { usePageContext } from '../contexts/PageContext'
 
 export const usePresences = (roomId: string) => {
   const { user } = usePageContext()
-  const userId = user?.id ?? ''
+  const userId = user?.id
   const [presence, setPresence] = useState<{ id: string }[]>([])
 
   useEffect(() => {
